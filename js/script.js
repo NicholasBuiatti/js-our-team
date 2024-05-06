@@ -30,35 +30,39 @@ const teamMate6 = {
     immagine: 'barbara-ramos-graphic-designer.jpg'
 }
 //creazione array di oggetti
-const team = [ teamMate1, teamMate2, teamMate3, teamMate4, teamMate5, teamMate6];
+const team = [teamMate1, teamMate2, teamMate3, teamMate4, teamMate5, teamMate6];
 
 console.log('questo è il tuo team: ', team);
 
-let h1Name = document.querySelector('#nameTeam');
+
 
 //ciclo che itera per ogni oggetto nell'array
 for (let i = 0; i < team.length; i++) {
+    //seleziono il mainHTML per stampare su scheda
+    let main = document.querySelector('main');
+
     const mate = team[i];
     console.log(mate);
+    //per ogni ciclo creo un di contenitore della scheda
+    let box = document.createElement('div');
+    box.classList.add('profile')
+    main.append(box);
+    //per ogni ciclo creo un div come contenitore per i dati del personale
+    let boxData = document.createElement('div');
+    boxData.classList.add('col-5')
+    box.append(boxData)
 
+    //creo un ciclo for-in che itera per ogni chiave presente in ogni oggetto dell'array
     for (const key in mate) {
         console.log(key, mate[key])
-        h1Name.innerHTML += `<h1> ${key}: ${mate[key]} </h1>`;
+        //se la chiave è immagine allora stampo nel box il div contenente l'immagine altrimenti stampo nel boxData dove vengono stampati i dati
+        if (key == 'immagine') {
+            const imgProfile = mate.immagine;
+            box.innerHTML += `<div class='col-7 text-end'>
+                                    <img class='object-fit-cover border rounded' src=./img/${imgProfile}>
+                                </div>`
+        } else {
+            boxData.innerHTML += `<h1> ${key}: ${mate[key]} </h1>`;
+        }
     }
-
-    
 }
-
-
-/*
-let h1Role = document.querySelector('#roleTeam');
-let imgTeam = document.querySelector('#imgProfile')
-const nameMate = mate.nome;
-    h1Name.innerHTML += `<h1> nome: ${nameMate} </h1>`;
-    const roleMate = mate.ruolo;
-    h1Role.innerHTML += `<h1> ruolo: ${roleMate} </h1>`;
-    console.log('nome:', nameMate,'ruolo:', roleMate);
-    const imgProfile = mate.immagine;
-    console.log('foto:', imgProfile);
-    imgTeam.innerHTML += `<img src=./img/${imgProfile}>`
-    */

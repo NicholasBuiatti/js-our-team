@@ -1,0 +1,12 @@
+.profile {
+    background-color: orangered;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-top: 2rem;
+} 
+
+img {
+    width: 300px;
+    height: 300px;
+}
